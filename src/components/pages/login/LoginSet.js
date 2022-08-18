@@ -4,6 +4,8 @@ import { Btn, InWrap, Title, Wrap } from "../../style/style";
 export const LoginSet = () => {
   const {} = useForm();
 
+  const handleClick = () => {};
+
   return (
     <Wrap>
       <Title></Title>
@@ -13,7 +15,7 @@ export const LoginSet = () => {
       <InWrap>
         <input placeholder="비밀번호를 입력해주세요"></input>
       </InWrap>
-      <Btn>로그인</Btn>
+      <Btn onClick={handleClick}>로그인</Btn>
     </Wrap>
   );
 };
