@@ -4,11 +4,9 @@ import { MainStyle } from "../../components/style/GlobalStyle";
 export const Wrap = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: lightblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 100px;
 `;
 
 export const Title = styled.div``;
