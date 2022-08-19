@@ -21,21 +21,37 @@ export const Login = () => {
       <Box a={boxEl}></Box>
       <Con>
         <LConWrap>
-          <JoinText>
+          <JoinText
+            style={{
+              display: `${boxEl === "0" ? "none" : "flex"}`,
+            }}
+          >
             <Title>이미 계정이 있으신가요?</Title>
             <Btn onClick={handleClick}>로그인하기</Btn>
           </JoinText>
-          <LCon>
+          <LCon
+            style={{
+              display: `${boxEl === "0" ? "flex" : "none"}`,
+            }}
+          >
             <LoginSet />
           </LCon>
         </LConWrap>
         {/* ======================== */}
         <RConWrap>
-          <JoinText>
+          <JoinText
+            style={{
+              display: `${boxEl === "0" ? "flex" : "none"}`,
+            }}
+          >
             <Title>처음 방문하셨나요?</Title>
             <Btn onClick={handleClick}>계정 만들기</Btn>
           </JoinText>
-          <RCon>
+          <RCon
+            style={{
+              display: `${boxEl === "0" ? "none" : "flex"}`,
+            }}
+          >
             <Wrap
             // style={{ display: `${joinCon === "left" ? "none" : "flex"}` }}
             >

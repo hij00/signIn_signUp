@@ -9,7 +9,10 @@ export const Wrap = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+  margin-bottom: 100px;
+  font-size: 30px;
+`;
 
 export const InWrap = styled.div`
   width: 100%;
