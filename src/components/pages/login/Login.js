@@ -13,7 +13,7 @@ export const Login = () => {
 
   const handleClick = () => {
     // setBoxEl(`${boxEl === "left" ? "right" : "left"}`);
-    setBoxEl(`${boxEl === "0" ? "100%" : "0"}`);
+    setBoxEl(`${boxEl === "0" ? "-100%" : "0"}`);
   };
 
   return (
@@ -21,24 +21,6 @@ export const Login = () => {
       <Box a={boxEl}></Box>
       <Con>
         <LConWrap>
-          <JoinText
-            style={{
-              display: `${boxEl === "0" ? "none" : "flex"}`,
-            }}
-          >
-            <Title>이미 계정이 있으신가요?</Title>
-            <Btn onClick={handleClick}>로그인하기</Btn>
-          </JoinText>
-          <LCon
-            style={{
-              display: `${boxEl === "0" ? "flex" : "none"}`,
-            }}
-          >
-            <LoginSet />
-          </LCon>
-        </LConWrap>
-        {/* ======================== */}
-        <RConWrap>
           <JoinText
             style={{
               display: `${boxEl === "0" ? "flex" : "none"}`,
@@ -65,6 +47,24 @@ export const Login = () => {
               <Btn>로그인</Btn>
             </Wrap>
           </RCon>
+        </LConWrap>
+        {/* ======================== */}
+        <RConWrap>
+          <JoinText
+            style={{
+              display: `${boxEl === "0" ? "none" : "flex"}`,
+            }}
+          >
+            <Title>이미 계정이 있으신가요?</Title>
+            <Btn onClick={handleClick}>로그인하기</Btn>
+          </JoinText>
+          <LCon
+            style={{
+              display: `${boxEl === "0" ? "flex" : "none"}`,
+            }}
+          >
+            <LoginSet />
+          </LCon>
         </RConWrap>
       </Con>
     </AllWrap>
@@ -84,8 +84,8 @@ const Box = styled.div`
   background-color: beige;
   position: absolute;
   top: 0;
-  left: 0;
-  transition: 0.5s;
+  right: 0;
+  transition: 0.3s;
   transform: translateX(${(props) => props.a});
   z-index: 2;
 `;

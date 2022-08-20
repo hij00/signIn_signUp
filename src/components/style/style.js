@@ -12,6 +12,7 @@ export const Wrap = styled.div`
 export const Title = styled.div`
   margin-bottom: 100px;
   font-size: 30px;
+  font-weight: 900;
 `;
 
 export const InWrap = styled.div`
