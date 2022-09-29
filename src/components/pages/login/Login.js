@@ -2,15 +2,25 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { MainStyle } from "../../style/GlobalStyle";
-import { Btn, InWrap, SBtn, Title, Wrap } from "../../style/style";
+import {
+  Btn,
+  ConWrap,
+  ErrorM,
+  InWrap,
+  SBtn,
+  Title,
+  Wrap,
+} from "../../style/style";
 import { LoginSet } from "./LoginSet";
 import beach from "../../../img/beach.jpg";
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 export const Login = () => {
   const {
     handleSubmit,
     register,
     formState: { errors },
+    getValues,
   } = useForm({ mode: "onChange" });
   const [boxEl, setBoxEl] = useState("0");
   // const [joinCon, setJoinCon] = useState();
@@ -23,7 +33,15 @@ export const Login = () => {
 
   // console.log(errors);
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    const { username, password, pwCheck } = getValues();
+    const userDb = {
+      id: Date.now(),
+      email: username,
+      password: password,
+    };
+    console.log(userDb);
+  };
 
   return (
     <AllWrap
@@ -43,7 +61,6 @@ export const Login = () => {
               <Title>처음 방문하셨나요?</Title>
               <Desc>이메일로 손쉽게 회원가입하세요!</Desc>
               <SBtn onClick={handleClick}>계정 만들기</SBtn>
-              <Sns>SNS 동기화</Sns>
             </JoinText>
             <RCon
               style={{
@@ -53,51 +70,60 @@ export const Login = () => {
               <Wrap>
                 <Title></Title>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <InWrap>
-                    <input
-                      type="text"
-                      placeholder="ID : 4글자 이상 12글자 이하의 영어로 작성해주세요"
-                      {...register("username", {
-                        required: "아이디는 필수입니다",
-                        pattern: {
-                          value: /^[A-Za-z0-9]{4,12}$/,
-                          message:
-                            "4글자 이상 12글자 이하의 영어로만 작성해주세요",
-                        },
-                      })}
-                    ></input>
-                  </InWrap>
-                  <InWrap>
-                    <input
-                      type="password"
-                      placeholder="비밀번호를 입력해주세요"
-                      {...register("password", {
-                        required: "비밀번호는 필수입니다",
-                        pattern: {
-                          value: /^[A-Za-z0-9]{6,12}$/,
-                          message:
-                            "6글자 이상 12글자 이하의 영어로만 작성해주세요",
-                        },
-                      })}
-                    ></input>
-                  </InWrap>
-                  <InWrap>
-                    <input
-                      type="password"
-                      placeholder="비밀번호를 한번 더 입력해주세요"
-                      {...register("pwCheck", {
-                        required: "비밀번호를 확인해주세요",
-                        pattern: {
-                          value: /^[A-Za-z0-9]{6,12}$/,
-                          message:
-                            "6글자 이상 12글자 이하의 영어로만 작성해주세요",
-                        },
-                        // validate: (value) =>
-                        //   password.current === value ||
-                        //   "비밀번호가 일치하지 않습니다",
-                      })}
-                    ></input>
-                  </InWrap>
+                  <ConWrap>
+                    <ErrorM>{errors?.username?.message}</ErrorM>
+                    <InWrap>
+                      <input
+                        type="text"
+                        placeholder="ID : 4글자 이상 12글자 이하의 영어로 작성해주세요"
+                        {...register("username", {
+                          required: "아이디는 필수입니다",
+                          pattern: {
+                            value: /^[A-Za-z0-9]{4,12}$/,
+                            message:
+                              "4글자 이상 12글자 이하의 영어로만 작성해주세요",
+                          },
+                        })}
+                      ></input>
+                    </InWrap>
+                  </ConWrap>
+                  <ConWrap>
+                    <ErrorM>{errors?.password?.message}</ErrorM>
+                    <InWrap>
+                      <input
+                        type="password"
+                        placeholder="PW : 비밀번호를 입력해주세요"
+                        {...register("password", {
+                          required: "비밀번호는 필수입니다",
+                          pattern: {
+                            value: /^[A-Za-z0-9]{6,12}$/,
+                            message:
+                              "6글자 이상 12글자 이하의 영어로만 작성해주세요",
+                          },
+                        })}
+                      ></input>
+                    </InWrap>
+                  </ConWrap>
+                  <ConWrap>
+                    <ErrorM>{errors?.pwCheck?.message}</ErrorM>
+                    <InWrap>
+                      <input
+                        type="password"
+                        placeholder=" PW : 비밀번호를 한번 더 입력해주세요"
+                        {...register("pwCheck", {
+                          required: "비밀번호를 확인해주세요",
+                          pattern: {
+                            value: /^[A-Za-z0-9]{6,12}$/,
+                            message:
+                              "6글자 이상 12글자 이하의 영어로만 작성해주세요",
+                          },
+                          // validate: (value) =>
+                          //   password.current === value ||
+                          //   "비밀번호가 일치하지 않습니다",
+                        })}
+                      ></input>
+                    </InWrap>
+                  </ConWrap>
                   <Btn>회원가입</Btn>
                 </form>
               </Wrap>
@@ -111,10 +137,8 @@ export const Login = () => {
               }}
             >
               <Title>이미 계정이 있으신가요?</Title>
-              <Desc>sns로 간편하게 로그인하세요!</Desc>
 
               <SBtn onClick={handleClick}>로그인하기</SBtn>
-              <Sns>SNS 동기화</Sns>
             </JoinText>
             <LCon
               style={{
@@ -193,9 +217,4 @@ const Desc = styled.div`
   font-size: 20px;
   font-weight: 500;
   opacity: 0.5;
-`;
-
-const Sns = styled.div`
-  margin: 50px 20px;
-  font-size: 14px;
 `;
