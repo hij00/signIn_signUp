@@ -21,26 +21,35 @@ export const Login = () => {
     register,
     formState: { errors },
     getValues,
+    setError,
+    clearErrors,
   } = useForm({ mode: "onChange" });
+
+  // =================애니메이션
   const [boxEl, setBoxEl] = useState("0");
-  // const [joinCon, setJoinCon] = useState();
-  // const [loginCon, setLoginCon] = useState();
 
   const handleClick = () => {
-    // setBoxEl(`${boxEl === "left" ? "right" : "left"}`);
     setBoxEl(`${boxEl === "0" ? "-100%" : "0"}`);
   };
 
-  // console.log(errors);
-
+  // =================에러체크
   const onSubmit = () => {
     const { username, password, pwCheck } = getValues();
+    const checkUserDb = userDb.filter((a) => a.user === username);
     const userDb = {
       id: Date.now(),
-      email: username,
+      user: username,
       password: password,
     };
-    console.log(userDb);
+    // console.log(userDb);
+    // if (condition) {
+
+    // }
+    if (checkUserDb.length >= 1) {
+      setError("usernameResult", {
+        message: "이미 가입된 아이디입니다.",
+      });
+    }
   };
 
   return (
@@ -52,6 +61,7 @@ export const Login = () => {
       <BlurImg>
         <Box a={boxEl}></Box>
         <Con>
+          {/* ==========회원가입 */}
           <LConWrap>
             <JoinText
               style={{
@@ -62,13 +72,14 @@ export const Login = () => {
               <Desc>이메일로 손쉽게 회원가입하세요!</Desc>
               <SBtn onClick={handleClick}>계정 만들기</SBtn>
             </JoinText>
-            <RCon
+
+            {/* ===================회원가입폼 */}
+            <LCon
               style={{
                 display: `${boxEl === "0" ? "none" : "flex"}`,
               }}
             >
               <Wrap>
-                <Title></Title>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <ConWrap>
                     <ErrorM>{errors?.username?.message}</ErrorM>
@@ -82,6 +93,9 @@ export const Login = () => {
                             value: /^[A-Za-z0-9]{4,12}$/,
                             message:
                               "4글자 이상 12글자 이하의 영어로만 작성해주세요",
+                          },
+                          onChange() {
+                            clearErrors("usernameResult");
                           },
                         })}
                       ></input>
@@ -127,9 +141,10 @@ export const Login = () => {
                   <Btn>회원가입</Btn>
                 </form>
               </Wrap>
-            </RCon>
+            </LCon>
           </LConWrap>
-          {/* ======================== */}
+
+          {/* ==========로그인 */}
           <RConWrap>
             <JoinText
               style={{
@@ -137,16 +152,17 @@ export const Login = () => {
               }}
             >
               <Title>이미 계정이 있으신가요?</Title>
-
               <SBtn onClick={handleClick}>로그인하기</SBtn>
             </JoinText>
-            <LCon
+
+            {/* ===================로그인폼 */}
+            <RCon
               style={{
                 display: `${boxEl === "0" ? "flex" : "none"}`,
               }}
             >
               <LoginSet />
-            </LCon>
+            </RCon>
           </RConWrap>
         </Con>
       </BlurImg>
