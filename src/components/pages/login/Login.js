@@ -114,9 +114,9 @@ export const Login = () => {
                             message:
                               "4글자 이상 12글자 이하의 영어로만 작성해주세요",
                           },
-                          // onChange() {
-                          //   clearErrors("usernameResult");
-                          // },
+                          onChange() {
+                            clearErrors("usernameResult");
+                          },
                         })}
                       ></input>
                     </InWrap>
