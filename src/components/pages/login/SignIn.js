@@ -11,9 +11,9 @@ import {
   Con,
   ConWrap,
 } from "../../style/style";
-import { userDb } from "./Login";
+import { userDb } from "./SignUp";
 
-export const LoginSet = () => {
+export const SignIn = () => {
   const { usernameDb, passwordDb } = userDb;
   const navigate = useNavigate();
   const {
