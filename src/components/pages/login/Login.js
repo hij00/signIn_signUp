@@ -15,6 +15,8 @@ import { LoginSet } from "./LoginSet";
 import beach from "../../../img/beach.jpg";
 import { getValue } from "@testing-library/user-event/dist/utils";
 
+export let userDb = [];
+
 export const Login = () => {
   const {
     handleSubmit,
@@ -27,7 +29,6 @@ export const Login = () => {
 
   // =================애니메이션
   const [boxEl, setBoxEl] = useState("0");
-
   const handleClick = () => {
     setBoxEl(`${boxEl === "0" ? "-100%" : "0"}`);
   };
@@ -36,12 +37,14 @@ export const Login = () => {
   const onSubmit = () => {
     const { username, password, pwCheck } = getValues();
     const checkUserDb = userDb.filter((a) => a.user === username);
-    const userDb = {
+    const userobj = {
       id: Date.now(),
       user: username,
       password: password,
+      passwordcheck: pwCheck,
     };
-    // console.log(userDb);
+    console.log(userDb);
+    console.log(checkUserDb);
     // if (condition) {
 
     // }
@@ -49,6 +52,17 @@ export const Login = () => {
       setError("usernameResult", {
         message: "이미 가입된 아이디입니다.",
       });
+    }
+
+    if (password !== pwCheck) {
+      setError("passwordResult", {
+        message: "비밀번호가 일치하지 않습니다.",
+      });
+    }
+
+    if (password === pwCheck && checkUserDb.length < 1) {
+      userDb.push(userobj);
+      handleClick();
     }
   };
 
@@ -81,8 +95,14 @@ export const Login = () => {
             >
               <Wrap>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                  {/* id=============== */}
                   <ConWrap>
-                    <ErrorM>{errors?.username?.message}</ErrorM>
+                    {errors?.username?.message && (
+                      <ErrorM>{errors?.username?.message}</ErrorM>
+                    )}
+                    {errors?.usernameResult?.message && (
+                      <ErrorM>{errors?.usernameResult?.message}</ErrorM>
+                    )}
                     <InWrap>
                       <input
                         type="text"
@@ -94,15 +114,19 @@ export const Login = () => {
                             message:
                               "4글자 이상 12글자 이하의 영어로만 작성해주세요",
                           },
-                          onChange() {
-                            clearErrors("usernameResult");
-                          },
+                          // onChange() {
+                          //   clearErrors("usernameResult");
+                          // },
                         })}
                       ></input>
                     </InWrap>
                   </ConWrap>
+
+                  {/* password=============== */}
                   <ConWrap>
-                    <ErrorM>{errors?.password?.message}</ErrorM>
+                    {errors?.password?.message && (
+                      <ErrorM>{errors?.password?.message}</ErrorM>
+                    )}
                     <InWrap>
                       <input
                         type="password"
@@ -119,7 +143,12 @@ export const Login = () => {
                     </InWrap>
                   </ConWrap>
                   <ConWrap>
-                    <ErrorM>{errors?.pwCheck?.message}</ErrorM>
+                    {errors?.pwCheck?.message && (
+                      <ErrorM>{errors?.pwCheck?.message}</ErrorM>
+                    )}
+                    {errors?.passwordResult?.message && (
+                      <ErrorM>{errors?.passwordResult?.message}</ErrorM>
+                    )}
                     <InWrap>
                       <input
                         type="password"
@@ -130,6 +159,9 @@ export const Login = () => {
                             value: /^[A-Za-z0-9]{6,12}$/,
                             message:
                               "6글자 이상 12글자 이하의 영어로만 작성해주세요",
+                          },
+                          onChange() {
+                            clearErrors("passwordResult");
                           },
                           // validate: (value) =>
                           //   password.current === value ||
