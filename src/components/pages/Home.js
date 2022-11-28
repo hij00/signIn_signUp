@@ -3,6 +3,7 @@ import beach from "./../../img/beach.jpg";
 import { SBtn, Title } from "./../style/style.js";
 // import {} from "../"
 import { Link } from "react-router-dom";
+import { MainStyle } from "../style/GlobalStyle";
 
 export const Home = () => {
   return (
@@ -33,10 +34,13 @@ const Wrap = styled.div`
 const Box = styled.div`
   width: 50%;
   height: 100%;
-  background-color: beige;
+  background-color: rgba(${MainStyle.rgbColor}, 0.7);
   position: absolute;
   top: 0;
   left: 0;
+  transition: 0.3s;
+  /* transform: translateX(${(props) => props.a}); */
+  /* z-index: 2; */
 `;
 
 const JoinText = styled.div`
