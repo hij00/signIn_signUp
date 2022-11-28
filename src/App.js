@@ -8,8 +8,8 @@ function App() {
     <Router>
       <GlobalStyle />
       <Routes>
-        {/* <Route path="/" element={<Home />}></Route> */}
-        <Route path="/" element={<Login />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </Router>
   );
