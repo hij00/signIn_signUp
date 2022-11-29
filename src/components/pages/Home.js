@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import beach from "./../../img/beach.jpg";
-import { SBtn, Title } from "./../style/style.js";
+import { Btn, SBtn, Title } from "./../style/style.js";
 // import {} from "../"
 import { Link } from "react-router-dom";
 import { MainStyle } from "../style/GlobalStyle";
@@ -8,14 +7,14 @@ import { MainStyle } from "../style/GlobalStyle";
 export const Home = () => {
   return (
     <Wrap
-      style={{
-        background: `url(${beach}) no-repeat center/cover`,
-      }}
+    // style={{
+    //   background: `url(${beach}) no-repeat center/cover`,
+    // }}
     >
       <Box>
         <JoinText>
-          <Title>환영합니다!</Title>
-          <Desc>로그인을 먼저 해주시겠어요?</Desc>
+          <Text>환영합니다!</Text>
+          <Text>로그인을 먼저 해주시겠어요?</Text>
           <SBtn>
             <Link to="/login">로그인하기</Link>
           </SBtn>
@@ -29,12 +28,20 @@ const Wrap = styled.div`
   width: 100%;
   height: 100vh;
   /* background-color: gray; */
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(255, 236, 195, 1) 100%
+  );
 `;
 
 const Box = styled.div`
+  padding: ${MainStyle.padding};
   width: 50%;
   height: 100%;
-  background-color: rgba(${MainStyle.rgbColor}, 0.7);
+  /* background-color: rgba(${MainStyle.rgbColor}, 0.7); */
+  background-color: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -51,8 +58,8 @@ const JoinText = styled.div`
   flex-direction: column;
 `;
 
-const Desc = styled.div`
-  margin-bottom: 150px;
+const Text = styled.h1`
+  margin-bottom: 50px;
   font-size: 20px;
   font-weight: 500;
   opacity: 0.5;

@@ -2,8 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { MainStyle } from "../../style/GlobalStyle";
 import { SBtn, Title } from "../../style/style";
-import { LoginSet, SignIn } from "./SignIn";
-import beach from "../../../img/beach.jpg";
+import { SignIn } from "./SignIn";
 import { SignUp } from "./SignUp";
 
 export const Login = () => {
@@ -14,11 +13,7 @@ export const Login = () => {
   };
 
   return (
-    <AllWrap
-      style={{
-        background: `url(${beach}) no-repeat center/cover`,
-      }}
-    >
+    <AllWrap>
       <BlurImg>
         <Box a={boxEl}></Box>
         <Con>
@@ -74,6 +69,12 @@ const AllWrap = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 1;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(255, 236, 195, 1) 100%
+  );
 `;
 
 const BlurImg = styled.div`
@@ -89,7 +90,7 @@ const Box = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  transition: 0.3s;
+  transition: 0.1s;
   transform: translateX(${(props) => props.a});
   z-index: 2;
 `;

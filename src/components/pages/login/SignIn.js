@@ -25,8 +25,6 @@ export const SignIn = () => {
     clearErrors,
   } = useForm();
 
-  // console.log(errors.username);
-
   const onSubmit = () => {
     const { username, password } = getValues();
     const checkUserDb = userDb.filter((a) => a.user === username);
@@ -44,7 +42,6 @@ export const SignIn = () => {
         // navigate("/", { state: checkUserDb });
       }
     }
-    console.log(checkUserDb);
   };
 
   return (

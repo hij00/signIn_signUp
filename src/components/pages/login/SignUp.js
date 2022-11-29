@@ -23,11 +23,7 @@ export const SignUp = ({ handleClick }) => {
       password: password,
       passwordcheck: pwCheck,
     };
-    console.log(userDb);
-    console.log(checkUserDb);
-    // if (condition) {
 
-    // }
     if (checkUserDb.length >= 1) {
       setError("usernameResult", {
         message: "이미 가입된 아이디입니다.",
