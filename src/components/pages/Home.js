@@ -1,23 +1,32 @@
 import styled from "styled-components";
-import { Btn, SBtn, Title } from "./../style/style.js";
-// import {} from "../"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MainStyle } from "../style/GlobalStyle";
 
 export const Home = () => {
+  const location = useLocation();
+  console.log(location?.state);
   return (
-    <Wrap
-    // style={{
-    //   background: `url(${beach}) no-repeat center/cover`,
-    // }}
-    >
+    <Wrap>
       <Box>
-        <JoinText>
-          <Text>환영합니다!</Text>
-          <Text>로그인을 먼저 해주시겠어요?</Text>
-          <SBtn>
-            <Link to="/login">로그인하기</Link>
-          </SBtn>
+        <JoinText
+          style={{
+            display: `${location?.state ? "none" : "flex"}`,
+          }}
+        >
+          <h1>환영합니다!</h1>
+          <h3>로그인을 먼저 해주시겠어요?</h3>
+          <Link to="/login">로그인하기</Link>
+        </JoinText>
+      </Box>
+      <Box>
+        <JoinText
+          style={{
+            display: `${location?.state ? "flex" : "none"}`,
+          }}
+        >
+          <h1>환영합니다!</h1>
+          <h3>다양한 컨텐츠를 즐겨보세요!</h3>
+          {/* <Link to="/login">로그인하기</Link> */}
         </JoinText>
       </Box>
     </Wrap>
@@ -27,7 +36,6 @@ export const Home = () => {
 const Wrap = styled.div`
   width: 100%;
   height: 100vh;
-  /* background-color: gray; */
   background: rgb(34, 193, 195);
   background: linear-gradient(
     0deg,
@@ -40,14 +48,11 @@ const Box = styled.div`
   padding: ${MainStyle.padding};
   width: 50%;
   height: 100%;
-  /* background-color: rgba(${MainStyle.rgbColor}, 0.7); */
   background-color: white;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   transition: 0.3s;
-  /* transform: translateX(${(props) => props.a}); */
-  /* z-index: 2; */
 `;
 
 const JoinText = styled.div`
@@ -56,11 +61,32 @@ const JoinText = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-
-const Text = styled.h1`
-  margin-bottom: 50px;
-  font-size: 20px;
-  font-weight: 500;
-  opacity: 0.5;
+  h1 {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: ${MainStyle.blackColor};
+  }
+  h3 {
+    margin-bottom: 150px;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.5;
+  }
+  a {
+    width: 100%;
+    display: inline-block;
+    padding: 12px 0;
+    box-sizing: border-box;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    background-color: ${MainStyle.grayColor};
+    color: white;
+    border-radius: 50px;
+    &:hover {
+      background-color: ${MainStyle.blackColor};
+      transition: 0.5s;
+    }
+  }
 `;

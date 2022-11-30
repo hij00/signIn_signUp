@@ -9,92 +9,71 @@ export const Wrap = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   font-size: 40px;
   font-weight: 900;
   margin-bottom: 20px;
-  color: ${MainStyle.mainColor};
+  color: ${MainStyle.blackColor};
 `;
 
-export const ConWrap = styled.div`
+export const InputWrap = styled.div`
   margin: 0 0 100px;
-  opacity: 0.8;
-  svg {
-    color: white;
-  }
-`;
-
-export const Con = styled.div`
-  margin: 10px 0;
-  color: white;
-  opacity: 0.5;
-  font-size: 14px;
-  font-weight: 100;
-  text-align: center;
-  svg {
-    margin-right: 10px;
-  }
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-export const InWrap = styled.div`
   width: 100%;
-  margin-bottom: 10px;
-  border-bottom: 1px solid white;
-
+  border-bottom: 1px solid ${MainStyle.blackColor};
   input {
     all: unset;
     width: 100%;
-    color: white;
+    color: ${MainStyle.blackColor};
     padding: 10px 0;
   }
   input::placeholder {
+    color: ${MainStyle.blackColor};
+    opacity: 0.8;
+  }
+  svg {
     color: white;
   }
 `;
 
-export const ErrorM = styled.div`
+export const ErrorMessage = styled.h3`
   color: crimson;
   font-size: 16px;
   font-weight: 700;
 `;
 
-export const Btn = styled.button`
+export const InputBtn = styled.button`
   all: unset;
   box-sizing: border-box;
   width: 100%;
   text-align: center;
-  background-color: white;
+  background-color: ${MainStyle.blackColor};
   border-radius: 50px;
-  color: ${MainStyle.mainColor};
+  color: white;
   opacity: 0.7;
   font-size: 24px;
   font-weight: 700;
-  padding: 10px 0;
+  padding: 12px 0;
   &:hover {
     opacity: 1;
     transition: 0.5s;
   }
 `;
 
-export const SBtn = styled.button`
+export const MainBtn = styled.button`
   all: unset;
   box-sizing: border-box;
   font-size: 25px;
   font-weight: 700;
   text-align: center;
-  /* border: 1.5px solid ${MainStyle.mainColor}; */
-  background-color: ${MainStyle.mainColor};
-  color: white;
+  /* background-color: white; */
+  border: 1px solid ${MainStyle.blackColor};
+  color: ${MainStyle.blackColor};
   border-radius: 50px;
   width: 100%;
   padding: 12px 0;
-  /* color: rgba(${MainStyle.rgbColor}, 0.5); */
-  opacity: 0.5;
   &:hover {
-    opacity: 1;
+    background-color: ${MainStyle.blackColor};
+    color: white;
     transition: 0.5s;
   }
 `;

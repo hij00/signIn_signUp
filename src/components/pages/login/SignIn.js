@@ -3,15 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {
-  Btn,
-  InWrap,
+  InputBtn,
   Title,
   Wrap,
-  ErrorM,
-  Con,
-  ConWrap,
+  ErrorMessage,
+  // FindId,
+  InputWrap,
 } from "../../style/style";
 import { userDb } from "./SignUp";
+import styled from "styled-components";
+import { MainStyle } from "../../style/GlobalStyle";
 
 export const SignIn = () => {
   const { usernameDb, passwordDb } = userDb;
@@ -39,7 +40,7 @@ export const SignIn = () => {
           message: "비밀번호가 틀렸습니다.",
         });
       } else {
-        // navigate("/", { state: checkUserDb });
+        navigate("/", { state: checkUserDb });
       }
     }
   };
@@ -48,60 +49,73 @@ export const SignIn = () => {
     <Wrap>
       <Title></Title>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ConWrap>
+        <InputWrap>
           {errors?.username?.message && (
-            <ErrorM>{errors?.username?.message}</ErrorM>
+            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
           )}
           {errors?.usernameResult?.message && (
-            <ErrorM>{errors?.usernameResult?.message}</ErrorM>
+            <ErrorMessage>{errors?.usernameResult?.message}</ErrorMessage>
           )}
-          <InWrap>
-            <input
-              type="text"
-              placeholder="ID : 4~12글자의 영어로만 작성해주세요"
-              {...register("username", {
-                required: "아이디는 필수입니다",
-                pattern: {
-                  value: /^[A-Za-z0-9]{4,12}$/,
-                  message: "4글자 이상 12글자 이하의 영어로만 작성해주세요",
-                },
-                onChange() {
-                  clearErrors("usernameResult");
-                },
-              })}
-            ></input>
-          </InWrap>
-        </ConWrap>
-        <ConWrap>
+
+          <input
+            type="text"
+            placeholder="ID : 4~12글자의 영어로만 작성해주세요"
+            {...register("username", {
+              required: "아이디는 필수입니다",
+              pattern: {
+                value: /^[A-Za-z0-9]{4,12}$/,
+                message: "4글자 이상 12글자 이하의 영어로만 작성해주세요",
+              },
+              onChange() {
+                clearErrors("usernameResult");
+              },
+            })}
+          ></input>
+        </InputWrap>
+        <InputWrap>
           {errors?.password?.message && (
-            <ErrorM>{errors?.password?.message}</ErrorM>
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
           )}
           {errors?.passwordResult?.message && (
-            <ErrorM>{errors?.passwordResult?.message}</ErrorM>
+            <ErrorMessage>{errors?.passwordResult?.message}</ErrorMessage>
           )}
-          <InWrap>
-            <input
-              type="password"
-              placeholder="PW : 6~12글자의 영어로만 작성해주세요"
-              {...register("password", {
-                required: "비밀번호는 필수입니다",
-                pattern: {
-                  value: /^[A-Za-z0-9]{6,12}$/,
-                  message: "6글자 이상 12글자 이하의 영어로만 작성해주세요",
-                },
-                onChange() {
-                  clearErrors("passwordResult");
-                },
-              })}
-            ></input>
-          </InWrap>
-        </ConWrap>
-        <Btn>로그인</Btn>
-        <Con>
+
+          <input
+            type="password"
+            placeholder="PW : 6~12글자의 영어로만 작성해주세요"
+            {...register("password", {
+              required: "비밀번호는 필수입니다",
+              pattern: {
+                value: /^[A-Za-z0-9]{6,12}$/,
+                message: "6글자 이상 12글자 이하의 영어로만 작성해주세요",
+              },
+              onChange() {
+                clearErrors("passwordResult");
+              },
+            })}
+          ></input>
+        </InputWrap>
+        <InputBtn>로그인</InputBtn>
+        <FindId>
           <FontAwesomeIcon icon={faCircleQuestion} />
           아이디 또는 비밀번호를 잊어버리셨나요?
-        </Con>
+        </FindId>
       </form>
     </Wrap>
   );
 };
+
+const FindId = styled.div`
+  margin: 50px 0;
+  color: ${MainStyle.blackColor};
+  opacity: 0.5;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  svg {
+    margin-right: 10px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+`;

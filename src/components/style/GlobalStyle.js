@@ -3,7 +3,8 @@ import reset from "styled-reset";
 
 export const MainStyle = {
   padding: "0 100px",
-  mainColor: "#1d1d1d",
+  blackColor: "#1d1d1d",
+  grayColor: "#999",
   rgbColor: "29,29,29",
 };
 
@@ -18,6 +19,5 @@ body{
 }
 a{
   text-decoration: none;
-  color: white;
 }
 `;
