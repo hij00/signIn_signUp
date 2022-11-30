@@ -4,7 +4,7 @@ import { MainStyle } from "../style/GlobalStyle";
 
 export const Home = () => {
   const location = useLocation();
-  console.log(location?.state);
+
   return (
     <Wrap>
       <Box>
