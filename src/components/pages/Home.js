@@ -17,8 +17,6 @@ export const Home = () => {
           <h3>로그인을 먼저 해주시겠어요?</h3>
           <Link to="/login">로그인하기</Link>
         </JoinText>
-      </Box>
-      <Box>
         <JoinText
           style={{
             display: `${location?.state ? "flex" : "none"}`,
