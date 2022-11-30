@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/sign_inup/static/js/main.7009db00.js",
-    "index.html": "/sign_inup/index.html",
-    "main.7009db00.js.map": "/sign_inup/static/js/main.7009db00.js.map"
+    "main.js": "/signIn_signUp/static/js/main.e0124003.js",
+    "index.html": "/signIn_signUp/index.html",
+    "main.e0124003.js.map": "/signIn_signUp/static/js/main.e0124003.js.map"
   },
   "entrypoints": [
-    "static/js/main.7009db00.js"
+    "static/js/main.e0124003.js"
   ]
 }
