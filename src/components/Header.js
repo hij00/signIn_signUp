@@ -62,7 +62,7 @@ const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
+  z-index: 1000;
 `;
 
 const Logo = styled.h1`
