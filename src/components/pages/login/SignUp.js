@@ -109,9 +109,6 @@ export const SignUp = ({ handleClick }) => {
                 onChange() {
                   clearErrors("passwordResult");
                 },
-                // validate: (value) =>
-                //   password.current === value ||
-                //   "비밀번호가 일치하지 않습니다",
               })}
             ></input>
           </InputWrap>

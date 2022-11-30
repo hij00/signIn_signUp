@@ -2,20 +2,12 @@ import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {
-  InputBtn,
-  Title,
-  Wrap,
-  ErrorMessage,
-  // FindId,
-  InputWrap,
-} from "../../style/style";
+import { InputBtn, Wrap, ErrorMessage, InputWrap } from "../../style/style";
 import { userDb } from "./SignUp";
 import styled from "styled-components";
 import { MainStyle } from "../../style/GlobalStyle";
 
 export const SignIn = () => {
-  const { usernameDb, passwordDb } = userDb;
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -31,7 +23,7 @@ export const SignIn = () => {
     const checkUserDb = userDb.filter((a) => a.user === username);
     if (checkUserDb.length < 1) {
       setError("usernameResult", {
-        message: "가입되지 않은 아이디입니다.",
+        message: "존재하지 않는 아이디입니다.",
       });
     } else {
       const { password: cpassword } = checkUserDb[0];
@@ -47,7 +39,6 @@ export const SignIn = () => {
 
   return (
     <Wrap>
-      <Title></Title>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputWrap>
           {errors?.username?.message && (

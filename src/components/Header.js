@@ -96,7 +96,6 @@ const Menu = styled.li`
 `;
 
 const DropBox = styled.div`
-  /* all: unset; */
   display: none;
   min-width: 150px;
   background-color: ${MainStyle.blackColor};

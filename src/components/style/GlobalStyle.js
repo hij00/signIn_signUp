@@ -21,8 +21,4 @@ a{
   text-decoration: none;
   color: ${MainStyle.blackColor};
 }
-button{
-  all: unset;
-  /* display: block; */
-}
 `;

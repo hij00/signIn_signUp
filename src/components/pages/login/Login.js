@@ -24,7 +24,7 @@ export const Login = () => {
         >
           <Title>처음 방문하셨나요?</Title>
           <Desc>아이디와 비밀번호만 누르면 회원가입 완료!</Desc>
-          <MainBtn onClick={handleClick}>계정 만들기</MainBtn>
+          <MainBtn onClick={handleClick}>회원가입하기</MainBtn>
         </MainText>
 
         {/* ===================회원가입폼 */}
@@ -44,8 +44,8 @@ export const Login = () => {
             display: `${boxEl === "0" ? "none" : "flex"}`,
           }}
         >
-          <Title>이미 계정이 있으신가요?</Title>
-          <Desc>없다면 회원가입을 해주세요!</Desc>
+          <Title>이미 회원이신가요?</Title>
+          <Desc>아니라면 회원가입을 먼저 해주세요!</Desc>
 
           <MainBtn onClick={handleClick}>로그인하기</MainBtn>
         </MainText>
