@@ -29,6 +29,7 @@ export const Header = () => {
           style={{
             display: `${location?.state ? "none" : "block"}`,
           }}
+          className="login"
         >
           <Link to="/login">로그인</Link>
         </Menu>
@@ -36,6 +37,7 @@ export const Header = () => {
           style={{
             display: `${location?.state ? "block" : "none"}`,
           }}
+          className="dropMenu"
         >
           User
           <FontAwesomeIcon icon={faCaretDown} />
@@ -75,7 +77,10 @@ const MenuWrap = styled.ul`
 const Menu = styled.li`
   margin-right: 50px;
   padding: 16px;
-  &:last-child {
+  &.login {
+    margin-right: 0;
+  }
+  &.dropMenu {
     margin-right: 0;
     position: relative;
     display: inline-block;
