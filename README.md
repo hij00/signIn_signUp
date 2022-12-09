@@ -4,10 +4,14 @@ react 폼 중 하나인 useForm()을 사용해 로그인 / 회원가입 구현
 
 ---
 
-### Header
+#### Header
 
-### Main Page
+#### Main Page
+
+- 화면을 반으로 나눠 회원가입과 로그인을 한 화면에 보이게 함
 
 ##### Sign in(로그인)
+
+- 회원이 아니라면
 
 ##### Sign up(회원가입)
