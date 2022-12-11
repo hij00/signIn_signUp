@@ -25,19 +25,19 @@ react 폼 중 하나인 useForm()을 사용해 로그인 / 회원가입 구현
 
 #### 2.1. Sign Up(회원가입)
 
-[**아이디**](#-아이디-중복-확인), [**비밀번호**](#-비밀번호-일치-확인), 비밀번호 확인
+[**아이디**](#4-아이디-중복-확인), [**비밀번호**](#5-비밀번호-일치-확인), 비밀번호 확인
 
 - ~~정보 저장 안되는~~ 임시 회원가입
-- [**빈 배열에 회원가입 정보를 전송**](#)해서 정보가 있는 것 처럼 생성
+- [**빈 배열에 회원가입 정보를 전송**](#3-arrpush)해서 정보가 있는 것 처럼 생성
 - 배열 앞에 export를 붙여 로그인 파일에서 배열 import
 
-1. 배열 만들기
+**1) 배열 만들기**
 
-```javascript:SignUp.js
+```javascript
 export let userDb = [];
 ```
 
-2. 유저 정보를 넣을 객체 생성
+**2) 유저 정보를 넣을 객체 생성**
 
 ```javascript
 const userObj = {
@@ -48,52 +48,60 @@ const userObj = {
 };
 ```
 
-3. ~~비밀번호가 일치 && 새 아이디이면~~ 배열에 객체 넣기 => arr.push()
+**3) arr.push()**
+~~비밀번호가 일치 && 새 아이디이면~~ 배열에 객체 넣기
 
-```
+```javascript
 if (password === pwCheck && checkUserDb.length < 1) {
-      userDb.push(userObj);
-      handleClick();
-    }
+  userDb.push(userObj);
+  handleClick();
+}
 ```
 
-- 아이디 중복 확인
+**4) 아이디 중복 확인**
+[**setError**](#seterror)를 사용해 조건이 맞다면(아이디가 중복이라면) message를 띄움
 
-```
+```javascript
 if (checkUserDb.length >= 1) {
-      setError("usernameResult", {
-        message: "이미 가입된 아이디입니다.",
-      });
-    }
+  setError("usernameResult", {
+    message: "이미 가입된 아이디입니다.",
+  });
+}
 ```
 
-- 비밀번호 일치 확인
+**5) 비밀번호 일치 확인**
+[**setError**](#seterror)를 사용해 조건이 맞다면(비밀번호가 일치하지 않다면) message를 띄움
 
-```
+```javascript
 if (password !== pwCheck) {
-      setError("passwordResult", {
-        message: "비밀번호가 일치하지 않습니다.",
-      });
-    }
+  setError("passwordResult", {
+    message: "비밀번호가 일치하지 않습니다.",
+  });
+}
 ```
 
 #### 2.2. Sign In(로그인)
 
 아이디, 비밀번호
 
-- ***
+---
 
-#### useForm()
+# useForm()
 
-- ##### mode
+##### mode
 
+```javascript
+useForm({ mode: "onChange" });
 ```
-useForm({mode: "onChange"})
-```
 
-- ##### register
-- ##### handleSubmit
-- ##### getValuses
-- ##### setError
-- ##### clearErrors
-- ##### formState
+##### register
+
+##### handleSubmit
+
+##### getValuses
+
+##### setError
+
+##### clearErrors
+
+##### formState
