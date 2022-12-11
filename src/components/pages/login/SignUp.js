@@ -17,7 +17,7 @@ export const SignUp = ({ handleClick }) => {
   const onSubmit = () => {
     const { username, password, pwCheck } = getValues();
     const checkUserDb = userDb.filter((a) => a.user === username);
-    const userobj = {
+    const userObj = {
       id: Date.now(),
       user: username,
       password: password,
@@ -37,7 +37,7 @@ export const SignUp = ({ handleClick }) => {
     }
 
     if (password === pwCheck && checkUserDb.length < 1) {
-      userDb.push(userobj);
+      userDb.push(userObj);
       handleClick();
     }
   };

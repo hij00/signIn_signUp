@@ -4,40 +4,99 @@ react 폼 중 하나인 useForm()을 사용해 로그인 / 회원가입 구현
 
 ---
 
-#### Header
+#### 1. Header
 
-#### Main Page
+- LOGO를 누르면 첫 화면으로 돌아감
+  ![signIN_signUP](https://user-images.githubusercontent.com/106130501/206829914-a2cb5b20-cf8d-438d-96de-bb59bb3ae19d.PNG)
+- 우측 상단의 로그인(로그아웃상태)을 누르면 [**로그인 창**](#2.2.-sing-in)으로 이동
+  ![로그인](https://user-images.githubusercontent.com/106130501/206839556-3e9c8ba0-cf20-404c-8dc6-f4499c99cee2.png)
+- 로그아웃(로그인 상태)을 누르면 간편하게 로그아웃 가능
+  ![로그아웃](https://user-images.githubusercontent.com/106130501/206839535-1df6f39c-9883-4225-9803-7773f32b039b.PNG)
 
-- 화면을 반으로 나눠 회원가입과 로그인을 한 화면에 보이게 함
+---
 
-##### Sign in(로그인)
+#### 2. Main Page
 
-- 회원이 아니라면
+- 화면을 반으로 나눠 회원가입과 로그인을 보기 쉽게 디자인함
+- [**로그인**](#2.2.-sing-in)
+  ![화면1](https://user-images.githubusercontent.com/106130501/206830674-3fd8eb07-6b05-4ea6-80a7-a526a3a37db8.PNG)
+- [**회원가입**](#2.1.-sing-up)
+  ![화면2](https://user-images.githubusercontent.com/106130501/206837752-da1cc139-fa28-4dcf-a7b9-bba3c084e163.PNG)
 
-##### Sign up(회원가입)
+#### 2.1. Sign Up(회원가입)
 
-# 2022 PORTFOLIO👩‍💻
+[**아이디**](#아이디-중복-확인), [**비밀번호**](#비밀번호-일치-확인), 비밀번호 확인
 
-### Dyson
+- ~~정보 저장 안되는~~ 임시 회원가입
+- [**빈 배열에 회원가입 정보를 전송**](#)해서 정보가 있는 것 처럼 생성
+- 배열 앞에 export를 붙여 로그인 파일에서 배열 import
 
-<a href = "https://wjdgus1122.github.io/dyson_project"><img alt="Dyson" src ="https://img.shields.io/badge/Link-181717.svg?&style=for-the-badge />
-</a>
-벳지 안 뜸
+1. 배열 만들기
 
-<a href = "https://for-it-study.tistory.com/"> <img alt="Tistory" src ="https://img.shields.io/badge/Tistory-white.svg?&style=for-the-badge"/></a>
-참고벳지
+```javascript:SignUp.js
+export let userDb = [];
+```
 
-<a href = "https://wjdgus1122.github.io/dyson_project"> <img alt="Dyson" src ="https://img.shields.io/badge/Dyson-white.svg?&style=for-the-badge"/></a>
-다이슨사이트 바로가가ㅣ
+2. 유저 정보를 넣을 객체 생성
 
-<a href = "https://github.com/wjdgus1122/dyson_project"><img alt="GitHub" src ="https://img.shields.io/badge/GitHub-181717.svg?&style=for-the-badge&logo=GitHub&logoColor=white"/>
-</a>
-다이슨 깃허브
+```javascript
+const userObj = {
+  id: Date.now(),
+  user: username,
+  password: password,
+  passwordcheck: pwCheck,
+};
+```
 
-### Heving (OTT 사이트)
+3. ~~비밀번호가 일치 && 새 아이디이면~~ 배열에 객체 넣기 => arr.push()
 
-### 서울식물원
+```
+if (password === pwCheck && checkUserDb.length < 1) {
+      userDb.push(userObj);
+      handleClick();
+    }
+```
 
-### 장바구니 토이프로젝트
+- 아이디 중복 확인, 비밀번호 일치 확인 => if문 사용
+  - 아이디 중복 확인
 
-### 로그인 토이프로젝트
+```
+if (checkUserDb.length >= 1) {
+      setError("usernameResult", {
+        message: "이미 가입된 아이디입니다.",
+      });
+    }
+```
+
+- 비밀번호 일치 확인
+
+```
+if (password !== pwCheck) {
+      setError("passwordResult", {
+        message: "비밀번호가 일치하지 않습니다.",
+      });
+    }
+```
+
+#### 2.2. Sign In(로그인)
+
+아이디, 비밀번호
+
+-
+
+---
+
+#### useForm()
+
+- ##### mode
+
+```
+useForm({mode: "onChange"})
+```
+
+- ##### register
+- ##### handleSubmit
+- ##### getValuses
+- ##### setError
+- ##### clearErrors
+- ##### formState
