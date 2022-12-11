@@ -8,7 +8,7 @@ react 폼 중 하나인 useForm()을 사용해 로그인 / 회원가입 구현
 
 - LOGO를 누르면 첫 화면으로 돌아감
   ![signIN_signUP](https://user-images.githubusercontent.com/106130501/206829914-a2cb5b20-cf8d-438d-96de-bb59bb3ae19d.PNG)
-- 우측 상단의 로그인(로그아웃상태)을 누르면 [**로그인 창**](#22-sign-in)으로 이동
+- 우측 상단의 로그인(로그아웃상태)을 누르면 [**로그인 창**](#2.2.-sign-in)으로 이동
   ![로그인](https://user-images.githubusercontent.com/106130501/206839556-3e9c8ba0-cf20-404c-8dc6-f4499c99cee2.png)
 - 로그아웃(로그인 상태)을 누르면 간편하게 로그아웃 가능
   ![로그아웃](https://user-images.githubusercontent.com/106130501/206839535-1df6f39c-9883-4225-9803-7773f32b039b.PNG)
@@ -18,9 +18,9 @@ react 폼 중 하나인 useForm()을 사용해 로그인 / 회원가입 구현
 #### 2. Main Page
 
 - 화면을 반으로 나눠 회원가입과 로그인을 보기 쉽게 디자인함
-- [**로그인**](#22-sign-in)
+- [**로그인**](#2.2.-sign-in로그인)
   ![화면1](https://user-images.githubusercontent.com/106130501/206830674-3fd8eb07-6b05-4ea6-80a7-a526a3a37db8.PNG)
-- [**회원가입**](#21-sign-up)
+- [**회원가입**](#2.1.-sign-up회원가입)
   ![화면2](https://user-images.githubusercontent.com/106130501/206837752-da1cc139-fa28-4dcf-a7b9-bba3c084e163.PNG)
 
 #### 2.1. Sign Up(회원가입)
