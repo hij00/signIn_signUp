@@ -21,6 +21,7 @@ export const SignIn = () => {
   const onSubmit = () => {
     const { username, password } = getValues();
     const checkUserDb = userDb.filter((a) => a.user === username);
+
     if (checkUserDb.length < 1) {
       setError("usernameResult", {
         message: "존재하지 않는 아이디입니다.",
